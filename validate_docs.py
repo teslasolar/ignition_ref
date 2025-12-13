@@ -168,7 +168,7 @@ def check_repository_structure():
 def check_critical_files():
     """Check for critical files"""
     critical_files = [
-        "README_GITHUB.md",
+        "README.md",
         "LICENSE",
         "CONTRIBUTING.md",
         ".gitignore",
@@ -218,9 +218,9 @@ def main():
     if all_ok:
         print("\n[SUCCESS] Your documentation is ready for GitHub!")
         print("\nNext steps:")
-        print("1. Review setup_github.md for repository setup")
-        print("2. Rename README_GITHUB.md to README.md")
-        print("3. Initialize git and push to GitHub")
+        print("1. All documentation validated successfully")
+        print("2. Ready to commit and push changes")
+        print("3. Repository is live on GitHub")
         return 0
     else:
         print("\n[WARNING] Some issues need attention before publishing")
