@@ -1,0 +1,433 @@
+{
+  "id": "overview",
+  "name": "System Overview",
+  "metadata": {
+    "title": "System Overview - Ignition Web HMI",
+    "backgroundColor": "#1e1e1e",
+    "padding": "20px"
+  },
+  "params": {
+    "refreshRate": {
+      "type": "number",
+      "defaultValue": 1000,
+      "metadata": {
+        "min": 500,
+        "max": 10000
+      }
+    }
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20,
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "height": "auto"
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "type": "flex",
+              "direction": "column",
+              "gap": 10,
+              "width": "25%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Temperature",
+                  "variant": "subheading"
+                }
+              },
+              {
+                "type": "gauge",
+                "props": {
+                  "bindings": {
+                    "value": "Process/Temperature"
+                  },
+                  "min": 0,
+                  "max": 200,
+                  "units": "°F",
+                  "label": "Process Temp",
+                  "size": 180,
+                  "thresholds": [
+                    { "value": 150, "color": "#ef5350" },
+                    { "value": 100, "color": "#ffca28" },
+                    { "value": 0, "color": "#66bb6a" }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "type": "flex",
+              "direction": "column",
+              "gap": 10,
+              "width": "25%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Pressure",
+                  "variant": "subheading"
+                }
+              },
+              {
+                "type": "gauge",
+                "props": {
+                  "bindings": {
+                    "value": "Process/Pressure"
+                  },
+                  "min": 0,
+                  "max": 100,
+                  "units": " PSI",
+                  "label": "System Pressure",
+                  "size": 180,
+                  "thresholds": [
+                    { "value": 80, "color": "#ef5350" },
+                    { "value": 60, "color": "#ffca28" },
+                    { "value": 0, "color": "#66bb6a" }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "type": "flex",
+              "direction": "column",
+              "gap": 10,
+              "width": "25%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Flow Rate",
+                  "variant": "subheading"
+                }
+              },
+              {
+                "type": "gauge",
+                "props": {
+                  "bindings": {
+                    "value": "Process/Flow"
+                  },
+                  "min": 0,
+                  "max": 500,
+                  "units": " GPM",
+                  "label": "Flow Rate",
+                  "size": 180
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "type": "flex",
+              "direction": "column",
+              "gap": 10,
+              "width": "25%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Tank Level",
+                  "variant": "subheading"
+                }
+              },
+              {
+                "type": "gauge",
+                "props": {
+                  "bindings": {
+                    "value": "Process/Level"
+                  },
+                  "min": 0,
+                  "max": 100,
+                  "units": "%",
+                  "label": "Tank #1",
+                  "size": 180,
+                  "thresholds": [
+                    { "value": 90, "color": "#ffca28" },
+                    { "value": 20, "color": "#ffca28" },
+                    { "value": 21, "color": "#66bb6a" }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "height": "auto"
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "width": "50%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "System Information",
+                  "variant": "subheading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "parameter", "header": "Parameter" },
+                    { "field": "value", "header": "Value" },
+                    { "field": "units", "header": "Units" }
+                  ],
+                  "data": [
+                    { "parameter": "System Uptime", "value": "24:35:12", "units": "HH:MM:SS" },
+                    { "parameter": "CPU Usage", "value": "35", "units": "%" },
+                    { "parameter": "Memory Usage", "value": "62", "units": "%" },
+                    { "parameter": "Active Alarms", "value": "2", "units": "" },
+                    { "parameter": "Connection Status", "value": "Online", "units": "" }
+                  ],
+                  "showHeader": true,
+                  "selectable": false
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "width": "50%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Equipment Status",
+                  "variant": "subheading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 10
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "row",
+                      "gap": 10,
+                      "alignItems": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Pump 1:",
+                          "style": { "width": "80px" }
+                        }
+                      },
+                      {
+                        "type": "button",
+                        "props": {
+                          "bindings": {
+                            "text": "Equipment/Pump1/Status"
+                          },
+                          "variant": "success",
+                          "action": {
+                            "type": "toggleTag",
+                            "tagPath": "Equipment/Pump1/Status"
+                          }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Equipment/Pump1/Speed"
+                          },
+                          "suffix": " RPM",
+                          "format": {
+                            "type": "number",
+                            "decimals": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "row",
+                      "gap": 10,
+                      "alignItems": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Pump 2:",
+                          "style": { "width": "80px" }
+                        }
+                      },
+                      {
+                        "type": "button",
+                        "props": {
+                          "bindings": {
+                            "text": "Equipment/Pump2/Status"
+                          },
+                          "variant": "error",
+                          "action": {
+                            "type": "toggleTag",
+                            "tagPath": "Equipment/Pump2/Status"
+                          }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Equipment/Pump2/Speed"
+                          },
+                          "suffix": " RPM",
+                          "format": {
+                            "type": "number",
+                            "decimals": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "row",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "style": {
+                        "marginTop": "10px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "button",
+                        "props": {
+                          "text": "Start All",
+                          "variant": "primary",
+                          "action": {
+                            "type": "script",
+                            "script": "context.tags.writeTag('Equipment/Pump1/Status', true); context.tags.writeTag('Equipment/Pump2/Status', true);"
+                          }
+                        }
+                      },
+                      {
+                        "type": "button",
+                        "props": {
+                          "text": "Stop All",
+                          "variant": "error",
+                          "action": {
+                            "type": "script",
+                            "script": "context.tags.writeTag('Equipment/Pump1/Status', false); context.tags.writeTag('Equipment/Pump2/Status', false);"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#2d2d2d",
+          "padding": 15,
+          "border": "1px solid #4a4a4a"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Live Trend",
+              "variant": "subheading",
+              "style": {
+                "marginBottom": "15px",
+                "display": "block"
+              }
+            }
+          },
+          {
+            "type": "chart",
+            "props": {
+              "type": "line",
+              "title": "Process Variables",
+              "width": "100%",
+              "height": 200,
+              "bindings": {
+                "data": "Process/Temperature"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

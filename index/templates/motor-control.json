@@ -1,0 +1,130 @@
+{
+  "id": "motor-control",
+  "name": "Motor Control Template",
+  "description": "Reusable motor control panel",
+  "params": {
+    "motorName": "Motor",
+    "tagBasePath": "Equipment/Motor",
+    "showSpeed": true
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "backgroundColor": "#2d2d2d",
+      "padding": 15,
+      "border": "1px solid #4a4a4a",
+      "type": "flex",
+      "direction": "column",
+      "gap": 10
+    },
+    "children": [
+      {
+        "type": "label",
+        "props": {
+          "text": "{motorName}",
+          "variant": "subheading"
+        }
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 10,
+          "alignItems": "center"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Status:",
+              "style": { "width": "60px" }
+            }
+          },
+          {
+            "type": "button",
+            "props": {
+              "bindings": {
+                "text": "{tagBasePath}/Status"
+              },
+              "variant": "primary",
+              "action": {
+                "type": "toggleTag",
+                "tagPath": "{tagBasePath}/Status"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 10,
+          "alignItems": "center"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Speed:",
+              "style": { "width": "60px" }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "bindings": {
+                "text": "{tagBasePath}/Speed"
+              },
+              "suffix": " RPM",
+              "format": {
+                "type": "number",
+                "decimals": 0
+              },
+              "style": {
+                "color": "#1e88e5",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 10
+        },
+        "children": [
+          {
+            "type": "button",
+            "props": {
+              "text": "Start",
+              "variant": "success",
+              "action": {
+                "type": "writeTag",
+                "tagPath": "{tagBasePath}/Status",
+                "value": true
+              }
+            }
+          },
+          {
+            "type": "button",
+            "props": {
+              "text": "Stop",
+              "variant": "error",
+              "action": {
+                "type": "writeTag",
+                "tagPath": "{tagBasePath}/Status",
+                "value": false
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

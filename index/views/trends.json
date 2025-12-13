@@ -1,0 +1,85 @@
+{
+  "id": "trends",
+  "name": "Trends",
+  "metadata": {
+    "title": "Historical Trends - Ignition Web HMI",
+    "backgroundColor": "#1e1e1e",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20
+    },
+    "children": [
+      {
+        "type": "label",
+        "props": {
+          "text": "Historical Trends",
+          "variant": "heading",
+          "style": { "marginBottom": "20px" }
+        }
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#2d2d2d",
+          "padding": 20,
+          "border": "1px solid #4a4a4a"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Temperature Trend",
+              "variant": "subheading",
+              "style": { "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "chart",
+            "props": {
+              "type": "line",
+              "width": "100%",
+              "height": 250,
+              "data": [72, 73, 74, 73.5, 75, 76, 74.5, 73, 72.5, 73],
+              "labels": ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00"],
+              "color": "#1e88e5"
+            }
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#2d2d2d",
+          "padding": 20,
+          "border": "1px solid #4a4a4a"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Pressure Trend",
+              "variant": "subheading",
+              "style": { "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "chart",
+            "props": {
+              "type": "line",
+              "width": "100%",
+              "height": 250,
+              "data": [45, 46, 45.5, 47, 48, 46, 45, 44, 45, 46],
+              "labels": ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00"],
+              "color": "#66bb6a"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

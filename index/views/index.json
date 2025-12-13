@@ -1,0 +1,46 @@
+{
+  "views": [
+    {
+      "id": "overview",
+      "name": "Overview",
+      "description": "System overview dashboard"
+    },
+    {
+      "id": "process",
+      "name": "Process Control",
+      "description": "Process monitoring and control"
+    },
+    {
+      "id": "equipment",
+      "name": "Equipment",
+      "description": "Equipment status and control"
+    },
+    {
+      "id": "alarms",
+      "name": "Alarms",
+      "description": "Active alarms and history"
+    },
+    {
+      "id": "trends",
+      "name": "Trends",
+      "description": "Historical trends and charts"
+    }
+  ],
+  "templates": [
+    {
+      "id": "motor-control",
+      "name": "Motor Control",
+      "description": "Standard motor control template"
+    },
+    {
+      "id": "valve-control",
+      "name": "Valve Control",
+      "description": "Standard valve control template"
+    },
+    {
+      "id": "tank-display",
+      "name": "Tank Display",
+      "description": "Tank level display template"
+    }
+  ]
+}

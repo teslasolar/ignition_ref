@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignition Perspective Web Renderer</title>
+    <link rel="stylesheet" href="index/css/perspective.css">
+    <link rel="stylesheet" href="index/css/components.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Header -->
+        <header id="app-header">
+            <div class="header-content">
+                <h1>Ignition Web HMI</h1>
+                <nav id="view-navigation">
+                    <!-- Dynamic navigation will be inserted here -->
+                </nav>
+                <div class="header-controls">
+                    <span id="connection-status" class="status-indicator">●</span>
+                    <span id="user-info">Guest</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main View Container -->
+        <main id="view-container">
+            <div id="loading-overlay" class="overlay active">
+                <div class="loader">
+                    <div class="spinner"></div>
+                    <p>Loading view...</p>
+                </div>
+            </div>
+            <div id="view-content">
+                <!-- Dynamic view content will be rendered here -->
+            </div>
+        </main>
+
+        <!-- Footer with diagnostics -->
+        <footer id="app-footer">
+            <div class="footer-content">
+                <span id="current-view">No View Loaded</span>
+                <span id="refresh-rate">Update: 1000ms</span>
+                <span id="render-time">Render: 0ms</span>
+                <span id="tag-count">Tags: 0</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for component properties -->
+    <div id="property-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Component Properties</h2>
+            <div id="property-editor">
+                <!-- Dynamic property editor -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Libraries -->
+    <script src="index/js/core/EventBus.js"></script>
+    <script src="index/js/core/TagManager.js"></script>
+    <script src="index/js/core/ComponentRegistry.js"></script>
+    <script src="index/js/core/ViewRenderer.js"></script>
+    <script src="index/js/core/Router.js"></script>
+
+    <!-- Component Definitions -->
+    <script src="index/js/components/Button.js"></script>
+    <script src="index/js/components/Label.js"></script>
+    <script src="index/js/components/NumericInput.js"></script>
+    <script src="index/js/components/Gauge.js"></script>
+    <script src="index/js/components/Chart.js"></script>
+    <script src="index/js/components/Table.js"></script>
+    <script src="index/js/components/Container.js"></script>
+    <script src="index/js/components/FlexContainer.js"></script>
+
+    <!-- Main Application -->
+    <script src="index/js/app.js"></script>
+
+    <script>
+        // Initialize application when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            window.perspectiveApp = new PerspectiveApp();
+            window.perspectiveApp.initialize();
+        });
+    </script>
+</body>
+</html>

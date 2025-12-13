@@ -1,0 +1,336 @@
+{
+  "id": "process",
+  "name": "Process Control",
+  "metadata": {
+    "title": "Process Control - Ignition Web HMI",
+    "backgroundColor": "#1e1e1e",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20,
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "label",
+        "props": {
+          "text": "Process Control Panel",
+          "variant": "heading",
+          "style": {
+            "textAlign": "center",
+            "marginBottom": "20px"
+          }
+        }
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 20,
+              "border": "1px solid #4a4a4a",
+              "width": "33%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Temperature Control",
+                  "variant": "subheading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Current:",
+                  "style": {
+                    "marginBottom": "10px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Process/Temperature"
+                  },
+                  "suffix": " °F",
+                  "format": {
+                    "type": "number",
+                    "decimals": 1
+                  },
+                  "variant": "heading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block",
+                    "color": "#1e88e5"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Setpoint:",
+                  "style": {
+                    "marginBottom": "5px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "numeric-input",
+                "props": {
+                  "value": 72.5,
+                  "min": 0,
+                  "max": 200,
+                  "step": 0.5,
+                  "decimals": 1,
+                  "tagPath": "Process/Temperature/Setpoint"
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 20,
+              "border": "1px solid #4a4a4a",
+              "width": "33%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Pressure Control",
+                  "variant": "subheading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Current:",
+                  "style": {
+                    "marginBottom": "10px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Process/Pressure"
+                  },
+                  "suffix": " PSI",
+                  "format": {
+                    "type": "number",
+                    "decimals": 1
+                  },
+                  "variant": "heading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block",
+                    "color": "#66bb6a"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Setpoint:",
+                  "style": {
+                    "marginBottom": "5px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "numeric-input",
+                "props": {
+                  "value": 45,
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "decimals": 0,
+                  "tagPath": "Process/Pressure/Setpoint"
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 20,
+              "border": "1px solid #4a4a4a",
+              "width": "33%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Flow Control",
+                  "variant": "subheading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Current:",
+                  "style": {
+                    "marginBottom": "10px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Process/Flow"
+                  },
+                  "suffix": " GPM",
+                  "format": {
+                    "type": "number",
+                    "decimals": 1
+                  },
+                  "variant": "heading",
+                  "style": {
+                    "marginBottom": "15px",
+                    "display": "block",
+                    "color": "#ffa726"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Setpoint:",
+                  "style": {
+                    "marginBottom": "5px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "numeric-input",
+                "props": {
+                  "value": 125,
+                  "min": 0,
+                  "max": 500,
+                  "step": 5,
+                  "decimals": 0,
+                  "tagPath": "Process/Flow/Setpoint"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#2d2d2d",
+          "padding": 20,
+          "border": "1px solid #4a4a4a"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Control Actions",
+              "variant": "subheading",
+              "style": {
+                "marginBottom": "15px",
+                "display": "block"
+              }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "type": "flex",
+              "direction": "row",
+              "gap": 15
+            },
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "text": "Start Process",
+                  "variant": "success",
+                  "action": {
+                    "type": "script",
+                    "script": "console.log('Starting process...'); context.eventBus.emit('process:start', {});"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Stop Process",
+                  "variant": "error",
+                  "action": {
+                    "type": "script",
+                    "script": "console.log('Stopping process...'); context.eventBus.emit('process:stop', {});"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Apply Setpoints",
+                  "variant": "primary",
+                  "action": {
+                    "type": "script",
+                    "script": "console.log('Applying setpoints...'); context.eventBus.emit('setpoints:apply', {});"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Emergency Stop",
+                  "variant": "error",
+                  "style": {
+                    "backgroundColor": "#d32f2f",
+                    "fontWeight": "bold"
+                  },
+                  "action": {
+                    "type": "script",
+                    "script": "if(confirm('Execute Emergency Stop?')) { console.log('EMERGENCY STOP'); context.eventBus.emit('emergency:stop', {}); }"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

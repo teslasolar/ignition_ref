@@ -1,0 +1,401 @@
+/* Component Styles for Perspective Web Renderer */
+
+/* Base Component Styles */
+.component {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.component.selected {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Container Components */
+.container-component {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.flex-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.flex-container.row {
+    flex-direction: row;
+}
+
+.flex-container.column {
+    flex-direction: column;
+}
+
+.flex-container.wrap {
+    flex-wrap: wrap;
+}
+
+.coordinate-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.coordinate-container > .component {
+    position: absolute;
+}
+
+/* Button Component */
+.button-component {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--surface-light), var(--surface));
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.button-component:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button-component:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.button-component.primary {
+    background: linear-gradient(135deg, var(--primary-color), #1976d2);
+}
+
+.button-component.secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #ff9800);
+}
+
+.button-component.success {
+    background: linear-gradient(135deg, var(--success-color), #4caf50);
+}
+
+.button-component.warning {
+    background: linear-gradient(135deg, var(--warning-color), #ffc107);
+    color: var(--background);
+}
+
+.button-component.error {
+    background: linear-gradient(135deg, var(--error-color), #f44336);
+}
+
+/* Label Component */
+.label-component {
+    padding: 0.25rem 0.5rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+.label-component.heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.label-component.subheading {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.label-component.caption {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Input Components */
+.numeric-input-component {
+    position: relative;
+    display: inline-block;
+}
+
+.numeric-input {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--surface-light);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    width: 150px;
+    transition: all 0.3s ease;
+}
+
+.numeric-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2);
+}
+
+.input-spinner {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.spinner-button {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0 0.25rem;
+    font-size: 0.625rem;
+    line-height: 1;
+}
+
+.spinner-button:hover {
+    background: var(--primary-color);
+    color: var(--text-primary);
+}
+
+/* Gauge Component */
+.gauge-component {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.gauge-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.gauge-background {
+    fill: none;
+    stroke: var(--surface-light);
+    stroke-width: 20;
+}
+
+.gauge-progress {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 20;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.gauge-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.gauge-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Chart Component */
+.chart-component {
+    width: 100%;
+    height: 300px;
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.chart-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* Table Component */
+.table-component {
+    width: 100%;
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background-color: var(--surface-light);
+}
+
+.data-table th {
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.data-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tbody tr:hover {
+    background-color: rgba(30, 136, 229, 0.1);
+}
+
+.data-table tbody tr.selected {
+    background-color: rgba(30, 136, 229, 0.2);
+}
+
+/* Status Indicators */
+.status-indicator-component {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.status-indicator-component.online {
+    background-color: var(--success-color);
+    box-shadow: 0 0 10px var(--success-color);
+}
+
+.status-indicator-component.offline {
+    background-color: var(--error-color);
+    box-shadow: 0 0 10px var(--error-color);
+}
+
+.status-indicator-component.warning {
+    background-color: var(--warning-color);
+    box-shadow: 0 0 10px var(--warning-color);
+}
+
+/* Progress Bar */
+.progress-component {
+    width: 100%;
+    height: 20px;
+    background-color: var(--surface-light);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-text {
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Tank Component */
+.tank-component {
+    width: 150px;
+    height: 200px;
+    position: relative;
+    background-color: var(--surface);
+    border: 2px solid var(--border-color);
+    border-radius: 0 0 10px 10px;
+}
+
+.tank-liquid {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(30, 136, 229, 0.8), rgba(30, 136, 229, 0.4));
+    transition: height 0.5s ease;
+    border-radius: 0 0 8px 8px;
+}
+
+.tank-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    z-index: 10;
+}
+
+/* Pipe Component */
+.pipe-component {
+    height: 10px;
+    background: linear-gradient(90deg, var(--surface-light), var(--surface));
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.pipe-flow {
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    background: var(--primary-color);
+    animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+    0% { left: -20px; }
+    100% { left: 100%; }
+}
+
+/* Alarm Indicator */
+.alarm-component {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.alarm-component.critical {
+    background-color: var(--error-color);
+    color: white;
+    animation: blink 1s infinite;
+}
+
+.alarm-component.warning {
+    background-color: var(--warning-color);
+    color: var(--background);
+}
+
+.alarm-component.info {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}

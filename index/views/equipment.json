@@ -1,0 +1,58 @@
+{
+  "id": "equipment",
+  "name": "Equipment Status",
+  "metadata": {
+    "title": "Equipment - Ignition Web HMI",
+    "backgroundColor": "#1e1e1e",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20
+    },
+    "children": [
+      {
+        "type": "label",
+        "props": {
+          "text": "Equipment Status and Control",
+          "variant": "heading",
+          "style": { "marginBottom": "20px" }
+        }
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "wrap": true
+        },
+        "children": [
+          {
+            "type": "template",
+            "props": {
+              "templateId": "motor-control",
+              "params": {
+                "motorName": "Pump 1",
+                "tagBasePath": "Equipment/Pump1"
+              }
+            }
+          },
+          {
+            "type": "template",
+            "props": {
+              "templateId": "motor-control",
+              "params": {
+                "motorName": "Pump 2",
+                "tagBasePath": "Equipment/Pump2"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

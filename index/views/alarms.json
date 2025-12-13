@@ -1,0 +1,164 @@
+{
+  "id": "alarms",
+  "name": "Alarms",
+  "metadata": {
+    "title": "Alarms - Ignition Web HMI",
+    "backgroundColor": "#1e1e1e",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20
+    },
+    "children": [
+      {
+        "type": "label",
+        "props": {
+          "text": "Alarm Management",
+          "variant": "heading",
+          "style": { "marginBottom": "20px" }
+        }
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "width": "200px"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Active Alarms",
+                  "variant": "subheading",
+                  "style": { "display": "block", "marginBottom": "10px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": { "text": "Alarms/Active" },
+                  "variant": "heading",
+                  "style": { "color": "#ef5350", "fontSize": "2rem" }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "width": "200px"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Acknowledged",
+                  "variant": "subheading",
+                  "style": { "display": "block", "marginBottom": "10px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": { "text": "Alarms/Acknowledged" },
+                  "variant": "heading",
+                  "style": { "color": "#ffca28", "fontSize": "2rem" }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#2d2d2d",
+              "padding": 15,
+              "border": "1px solid #4a4a4a",
+              "width": "200px"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "High Priority",
+                  "variant": "subheading",
+                  "style": { "display": "block", "marginBottom": "10px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": { "text": "Alarms/HighPriority" },
+                  "variant": "heading",
+                  "style": { "color": "#ef5350", "fontSize": "2rem" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#2d2d2d",
+          "padding": 20,
+          "border": "1px solid #4a4a4a"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Active Alarm List",
+              "variant": "subheading",
+              "style": { "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "table",
+            "props": {
+              "columns": [
+                { "field": "timestamp", "header": "Time" },
+                { "field": "priority", "header": "Priority" },
+                { "field": "source", "header": "Source" },
+                { "field": "message", "header": "Message" },
+                { "field": "status", "header": "Status" }
+              ],
+              "data": [
+                {
+                  "timestamp": "2024-12-13 10:15:23",
+                  "priority": "High",
+                  "source": "Process/Temperature",
+                  "message": "Temperature above high setpoint",
+                  "status": "Active"
+                },
+                {
+                  "timestamp": "2024-12-13 10:12:45",
+                  "priority": "Medium",
+                  "source": "Equipment/Pump2",
+                  "message": "Pump 2 offline",
+                  "status": "Active"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
