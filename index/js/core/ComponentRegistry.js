@@ -207,8 +207,10 @@ class BaseComponent {
             }
         });
 
-        // Add children
-        children.forEach(child => {
+        // Add children - ensure children is an array
+        const childArray = Array.isArray(children) ? children : [children];
+        childArray.forEach(child => {
+            if (child === null || child === undefined) return;
             if (typeof child === 'string') {
                 element.appendChild(document.createTextNode(child));
             } else if (child instanceof Element) {

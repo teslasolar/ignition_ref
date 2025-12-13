@@ -62,7 +62,11 @@ class ChartComponent extends BaseComponent {
     }
 
     drawChart() {
-        if (!this.ctx || !this.props.data || this.props.data.length === 0) return;
+        if (!this.ctx) return;
+
+        // Ensure data is an array
+        const data = Array.isArray(this.props.data) ? this.props.data : [];
+        if (data.length === 0) return;
 
         const ctx = this.ctx;
         const width = this.canvas.width;
@@ -76,8 +80,8 @@ class ChartComponent extends BaseComponent {
         const chartWidth = width - 2 * padding;
         const chartHeight = height - 2 * padding;
 
-        const maxValue = Math.max(...this.props.data);
-        const minValue = Math.min(...this.props.data);
+        const maxValue = Math.max(...data);
+        const minValue = Math.min(...data);
         const range = maxValue - minValue || 1;
 
         // Draw grid lines
@@ -90,9 +94,9 @@ class ChartComponent extends BaseComponent {
 
         // Draw data
         if (this.props.type === 'line') {
-            this.drawLineChart(ctx, padding, chartWidth, chartHeight, minValue, range);
+            this.drawLineChart(ctx, padding, chartWidth, chartHeight, minValue, range, data);
         } else if (this.props.type === 'bar') {
-            this.drawBarChart(ctx, padding, chartWidth, chartHeight, minValue, range);
+            this.drawBarChart(ctx, padding, chartWidth, chartHeight, minValue, range, data);
         }
 
         // Draw labels
@@ -140,15 +144,15 @@ class ChartComponent extends BaseComponent {
         ctx.stroke();
     }
 
-    drawLineChart(ctx, padding, width, height, minValue, range) {
-        const dataPoints = this.props.data.length;
+    drawLineChart(ctx, padding, width, height, minValue, range, data) {
+        const dataPoints = data.length;
         const xStep = width / (dataPoints - 1 || 1);
 
         ctx.strokeStyle = this.props.color;
         ctx.lineWidth = 2;
         ctx.beginPath();
 
-        this.props.data.forEach((value, index) => {
+        data.forEach((value, index) => {
             const x = padding + index * xStep;
             const y = padding + height - ((value - minValue) / range) * height;
 
@@ -163,7 +167,7 @@ class ChartComponent extends BaseComponent {
 
         // Draw points
         ctx.fillStyle = this.props.color;
-        this.props.data.forEach((value, index) => {
+        data.forEach((value, index) => {
             const x = padding + index * xStep;
             const y = padding + height - ((value - minValue) / range) * height;
 
@@ -173,14 +177,14 @@ class ChartComponent extends BaseComponent {
         });
     }
 
-    drawBarChart(ctx, padding, width, height, minValue, range) {
-        const dataPoints = this.props.data.length;
+    drawBarChart(ctx, padding, width, height, minValue, range, data) {
+        const dataPoints = data.length;
         const barWidth = width / dataPoints * 0.8;
         const barSpacing = width / dataPoints * 0.2;
 
         ctx.fillStyle = this.props.color;
 
-        this.props.data.forEach((value, index) => {
+        data.forEach((value, index) => {
             const x = padding + index * (barWidth + barSpacing) + barSpacing / 2;
             const barHeight = ((value - minValue) / range) * height;
             const y = padding + height - barHeight;

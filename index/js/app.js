@@ -25,33 +25,38 @@ class PerspectiveApp {
     }
 
     async initialize() {
-        console.log('Initializing Perspective Web Application...');
+        window.logger.info('Initializing Perspective Web Application...');
 
-        // Register all components
-        this.registerComponents();
+        try {
+            // Register all components
+            this.registerComponents();
 
-        // Load available views
-        await this.loadViewList();
+            // Load available views
+            await this.loadViewList();
 
-        // Setup event listeners
-        this.setupEventListeners();
+            // Setup event listeners
+            this.setupEventListeners();
 
-        // Initialize router
-        this.router.initialize();
+            // Initialize router
+            this.router.initialize();
 
-        // Start tag update loop
-        this.startTagUpdates();
+            // Start tag update loop
+            this.startTagUpdates();
 
-        // Load initial view
-        const defaultView = this.getDefaultView();
-        if (defaultView) {
-            await this.loadView(defaultView);
+            // Load initial view
+            const defaultView = this.getDefaultView();
+            if (defaultView) {
+                await this.loadView(defaultView);
+            }
+
+            // Hide loading overlay
+            this.hideLoading();
+
+            window.logger.info('Application initialized successfully');
+        } catch (error) {
+            window.logger.error('Failed to initialize application', error);
+            this.showError('Failed to initialize application: ' + error.message);
         }
-
-        // Hide loading overlay
-        this.hideLoading();
-
-        console.log('Application initialized successfully');
     }
 
     registerComponents() {
@@ -65,7 +70,7 @@ class PerspectiveApp {
         this.componentRegistry.register('container', ContainerComponent);
         this.componentRegistry.register('flex-container', FlexContainerComponent);
 
-        console.log(`Registered ${this.componentRegistry.getComponentCount()} components`);
+        window.logger.info(`Registered ${this.componentRegistry.getComponentCount()} components`);
     }
 
     async loadViewList() {
@@ -79,9 +84,9 @@ class PerspectiveApp {
             // Build navigation
             this.buildNavigation();
 
-            console.log(`Loaded ${this.views.length} views and ${this.templates.length} templates`);
+            window.logger.info(`Loaded ${this.views.length} views and ${this.templates.length} templates`);
         } catch (error) {
-            console.error('Failed to load view index:', error);
+            window.logger.error('Failed to load view index:', error);
             this.views = [];
             this.templates = [];
         }
@@ -105,7 +110,7 @@ class PerspectiveApp {
     }
 
     async loadView(viewId) {
-        console.log(`Loading view: ${viewId}`);
+        window.logger.info(`Loading view: ${viewId}`);
         this.showLoading();
 
         const startTime = performance.now();
@@ -114,20 +119,29 @@ class PerspectiveApp {
             // Check cache first
             let viewData;
             if (this.viewCache.has(viewId)) {
+                window.logger.debug('Loading view from cache');
                 viewData = this.viewCache.get(viewId);
             } else {
                 // Load view JSON
+                window.logger.debug('Fetching view from server');
                 const response = await fetch(`index/views/${viewId}.json`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch view: ${response.statusText}`);
+                }
                 viewData = await response.json();
                 this.viewCache.set(viewId, viewData);
             }
+
+            window.logger.debug('View data loaded', viewData);
 
             // Clear current view
             this.clearView();
 
             // Render new view
             const viewContainer = document.getElementById('view-content');
+            window.logger.debug('Starting view render');
             await this.viewRenderer.render(viewData, viewContainer);
+            window.logger.debug('View render complete');
 
             // Update current view
             this.currentView = viewData;
@@ -145,9 +159,9 @@ class PerspectiveApp {
             // Emit view loaded event
             this.eventBus.emit('view:loaded', { viewId, renderTime });
 
-            console.log(`View loaded in ${renderTime.toFixed(2)}ms`);
+            window.logger.info(`View loaded in ${renderTime.toFixed(2)}ms`);
         } catch (error) {
-            console.error('Failed to load view:', error);
+            window.logger.error('Failed to load view:', error);
             this.showError('Failed to load view: ' + error.message);
         } finally {
             this.hideLoading();
