@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Ignition specific
+*.idb
+*.gwbk
+*.log
+wrapper.log*
+*.pid
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration backups
+*.xml.bak
+*.conf.bak
+
+# Test files
+test_*.py
+*_test.py
+tests/
+
+# Documentation build
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Local configuration
+local_config.py
+.env
+
+# OS Files
+Thumbs.db
+Desktop.ini
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Certificates (for security)
+*.crt
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Credentials (never commit these!)
+credentials.json
+secrets.json
+passwords.txt
+api_keys.txt
