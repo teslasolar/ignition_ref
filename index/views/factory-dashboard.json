@@ -1,0 +1,569 @@
+{
+  "id": "factory-dashboard",
+  "name": "Factory Dashboard",
+  "icon": "🏭",
+  "category": "Production",
+  "description": "Repository factory metrics and production monitoring",
+  "metadata": {
+    "title": "Factory Dashboard - Konomi Ignaite Gitway",
+    "backgroundColor": "#0a0a0a",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 15,
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "style": { "marginBottom": "10px" }
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "🏭 Konomi Ignaite Gitway Factory",
+              "variant": "heading",
+              "style": { "color": "#00ff88", "fontSize": "32px" }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "type": "flex",
+              "direction": "column",
+              "alignItems": "flex-end"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Repository: teslasolar/ignition_ref",
+                  "style": { "color": "#888", "fontSize": "12px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Location: GitHub Pages",
+                  "style": { "color": "#888", "fontSize": "12px" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 15,
+          "height": "120px"
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "border": "2px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "TOTAL FILES",
+                  "style": { "color": "#00ff88", "fontSize": "10px", "letterSpacing": "1px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Factory/Stats/TotalFiles"
+                  },
+                  "style": {
+                    "fontSize": "48px",
+                    "color": "#fff",
+                    "fontWeight": "bold",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Production Assets",
+                  "style": { "color": "#666", "fontSize": "11px" }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "border": "2px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "LINES OF CODE",
+                  "style": { "color": "#00ff88", "fontSize": "10px", "letterSpacing": "1px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Factory/Stats/TotalLOC"
+                  },
+                  "style": {
+                    "fontSize": "48px",
+                    "color": "#fff",
+                    "fontWeight": "bold",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Total Production",
+                  "style": { "color": "#666", "fontSize": "11px" }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "border": "2px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "COMPONENTS",
+                  "style": { "color": "#00ff88", "fontSize": "10px", "letterSpacing": "1px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Factory/Stats/TotalComponents"
+                  },
+                  "style": {
+                    "fontSize": "48px",
+                    "color": "#fff",
+                    "fontWeight": "bold",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Active Units",
+                  "style": { "color": "#666", "fontSize": "11px" }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "border": "2px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "EFFICIENCY",
+                  "style": { "color": "#00ff88", "fontSize": "10px", "letterSpacing": "1px" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "Factory/Production/Efficiency"
+                  },
+                  "suffix": "%",
+                  "format": {
+                    "type": "number",
+                    "decimals": 1
+                  },
+                  "style": {
+                    "fontSize": "48px",
+                    "color": "#00ff88",
+                    "fontWeight": "bold",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Factory Score",
+                  "style": { "color": "#666", "fontSize": "11px" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#1a1a1a",
+          "padding": 20,
+          "border": "1px solid #333",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "PRODUCTION LINES (Views)",
+              "style": {
+                "color": "#00ff88",
+                "fontSize": "12px",
+                "letterSpacing": "1px",
+                "marginBottom": "15px",
+                "display": "block"
+              }
+            }
+          },
+          {
+            "type": "table",
+            "props": {
+              "columns": [
+                { "field": "line", "header": "Production Line" },
+                { "field": "status", "header": "Status" },
+                { "field": "files", "header": "Files" },
+                { "field": "loc", "header": "LOC" },
+                { "field": "components", "header": "Components" },
+                { "field": "bindings", "header": "Bindings" },
+                { "field": "uptime", "header": "Uptime (s)" }
+              ],
+              "data": [
+                {
+                  "line": "Overview Production",
+                  "status": "● Running",
+                  "files": "5",
+                  "loc": "433",
+                  "components": "12",
+                  "bindings": "4",
+                  "uptime": "150"
+                },
+                {
+                  "line": "Process Control",
+                  "status": "● Idle",
+                  "files": "3",
+                  "loc": "298",
+                  "components": "8",
+                  "bindings": "6",
+                  "uptime": "75"
+                },
+                {
+                  "line": "Equipment Assembly",
+                  "status": "● Running",
+                  "files": "4",
+                  "loc": "412",
+                  "components": "10",
+                  "bindings": "8",
+                  "uptime": "230"
+                },
+                {
+                  "line": "Quality Control",
+                  "status": "● Idle",
+                  "files": "2",
+                  "loc": "187",
+                  "components": "5",
+                  "bindings": "3",
+                  "uptime": "45"
+                },
+                {
+                  "line": "Analytics Production",
+                  "status": "● Idle",
+                  "files": "2",
+                  "loc": "85",
+                  "components": "3",
+                  "bindings": "2",
+                  "uptime": "30"
+                },
+                {
+                  "line": "Factory Management",
+                  "status": "● Running",
+                  "files": "8",
+                  "loc": "895",
+                  "components": "15",
+                  "bindings": "7",
+                  "uptime": "320"
+                },
+                {
+                  "line": "Maintenance Dept",
+                  "status": "● Idle",
+                  "files": "3",
+                  "loc": "542",
+                  "components": "9",
+                  "bindings": "6",
+                  "uptime": "90"
+                },
+                {
+                  "line": "Inventory Mgmt",
+                  "status": "● Idle",
+                  "files": "4",
+                  "loc": "623",
+                  "components": "11",
+                  "bindings": "4",
+                  "uptime": "110"
+                },
+                {
+                  "line": "Integration Services",
+                  "status": "● Running",
+                  "files": "6",
+                  "loc": "1420",
+                  "components": "18",
+                  "bindings": "0",
+                  "uptime": "480"
+                }
+              ],
+              "showHeader": true,
+              "selectable": false,
+              "style": {
+                "fontSize": "12px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 15
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "border": "1px solid #333",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "PROCESS CONTROL",
+                  "style": {
+                    "color": "#00ff88",
+                    "fontSize": "12px",
+                    "letterSpacing": "1px",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "row",
+                  "gap": 10,
+                  "justifyContent": "space-around"
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "alignItems": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "gauge",
+                        "props": {
+                          "bindings": {
+                            "value": "Factory/Process/Temperature"
+                          },
+                          "min": 0,
+                          "max": 200,
+                          "units": "°F",
+                          "label": "Temp",
+                          "size": 100,
+                          "thresholds": [
+                            { "value": 150, "color": "#ef5350" },
+                            { "value": 100, "color": "#ffca28" },
+                            { "value": 0, "color": "#00ff88" }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "alignItems": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "gauge",
+                        "props": {
+                          "bindings": {
+                            "value": "Factory/Process/Pressure"
+                          },
+                          "min": 0,
+                          "max": 100,
+                          "units": "PSI",
+                          "label": "Pressure",
+                          "size": 100,
+                          "thresholds": [
+                            { "value": 80, "color": "#ef5350" },
+                            { "value": 60, "color": "#ffca28" },
+                            { "value": 0, "color": "#00ff88" }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "alignItems": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "gauge",
+                        "props": {
+                          "bindings": {
+                            "value": "Factory/Process/Flow"
+                          },
+                          "min": 0,
+                          "max": 500,
+                          "units": "GPM",
+                          "label": "Flow",
+                          "size": 100,
+                          "thresholds": [
+                            { "value": 400, "color": "#ef5350" },
+                            { "value": 200, "color": "#ffca28" },
+                            { "value": 0, "color": "#00ff88" }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "border": "1px solid #333",
+              "borderRadius": "8px",
+              "width": "300px"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "REPOSITORY METRICS",
+                  "style": {
+                    "color": "#00ff88",
+                    "fontSize": "12px",
+                    "letterSpacing": "1px",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "metric", "header": "Metric" },
+                    { "field": "value", "header": "Value" }
+                  ],
+                  "data": [
+                    { "metric": "Total Views", "value": "9" },
+                    { "metric": "Total UDTs", "value": "4" },
+                    { "metric": "Tag Count", "value": "120+" },
+                    { "metric": "API Endpoints", "value": "15" },
+                    { "metric": "MCP Tools", "value": "10" },
+                    { "metric": "CLI Commands", "value": "20" },
+                    { "metric": "Commits", "value": "15" },
+                    { "metric": "Quality Score", "value": "95%" }
+                  ],
+                  "showHeader": false,
+                  "selectable": false,
+                  "style": { "fontSize": "12px" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#0a0a0a",
+          "padding": 10,
+          "border": "1px solid #00ff88",
+          "borderRadius": "4px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Factory Status: All production lines operational | Repository: https://github.com/teslasolar/ignition_ref | Deployment: GitHub Pages Active",
+              "style": {
+                "color": "#00ff88",
+                "fontSize": "11px",
+                "fontFamily": "monospace",
+                "textAlign": "center"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

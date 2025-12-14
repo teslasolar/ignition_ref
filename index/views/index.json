@@ -62,6 +62,13 @@
       "description": "Complete API reference for AI/MCP integration",
       "icon": "🔌",
       "category": "Documentation"
+    },
+    {
+      "id": "factory-dashboard",
+      "name": "Factory Dashboard",
+      "description": "Repository factory metrics and production monitoring",
+      "icon": "🏭",
+      "category": "Production"
     }
   ],
   "templates": [
