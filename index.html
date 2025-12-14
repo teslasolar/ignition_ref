@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ignition Perspective Web Renderer</title>
+    <title>Konomi Ignaite Gitway</title>
     <link rel="stylesheet" href="index/css/perspective.css">
     <link rel="stylesheet" href="index/css/components.css">
+    <link rel="stylesheet" href="index/css/gateway.css">
 </head>
 <body>
     <div id="app">
         <!-- Navigation Header -->
         <header id="app-header">
             <div class="header-content">
-                <h1>Ignition Web HMI</h1>
+                <div class="brand">
+                    <span class="brand-logo">⚡</span>
+                    <h1>Konomi Ignaite Gitway</h1>
+                    <span class="version">v1.0.0</span>
+                </div>
                 <nav id="view-navigation">
                     <!-- Dynamic navigation will be inserted here -->
                 </nav>
                 <div class="header-controls">
+                    <button id="gateway-btn" class="control-btn">Gateway</button>
                     <span id="connection-status" class="status-indicator">●</span>
                     <span id="user-info">Guest</span>
                 </div>
@@ -62,6 +68,8 @@
     <script src="index/js/core/Logger.js"></script>
     <script src="index/js/core/EventBus.js"></script>
     <script src="index/js/core/TagManager.js"></script>
+    <script src="index/js/core/UDTManager.js"></script>
+    <script src="index/js/core/ViewDiscovery.js"></script>
     <script src="index/js/core/ComponentRegistry.js"></script>
     <script src="index/js/core/ViewRenderer.js"></script>
     <script src="index/js/core/Router.js"></script>
@@ -78,6 +86,11 @@
 
     <!-- Main Application -->
     <script src="index/js/app.js"></script>
+
+    <!-- CLI/API Infrastructure -->
+    <script src="index/cli/api-server.js"></script>
+    <script src="index/cli/mcp-server.js"></script>
+    <script src="index/cli/cli-interface.js"></script>
 
     <script>
         // Initialize application when DOM is ready

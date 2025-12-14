@@ -1,0 +1,526 @@
+{
+  "id": "tag-browser",
+  "name": "Tag Browser",
+  "icon": "🏷️",
+  "category": "Configuration",
+  "description": "Browse and manage system tags",
+  "metadata": {
+    "title": "Tag Browser - Konomi Ignaite Gitway",
+    "backgroundColor": "#1a1a1a",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20,
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "style": { "marginBottom": "20px" }
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Tag Browser",
+              "variant": "heading",
+              "style": { "color": "#00ff88" }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "type": "flex",
+              "direction": "row",
+              "gap": 10
+            },
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "text": "+ New Tag",
+                  "variant": "primary",
+                  "style": {
+                    "backgroundColor": "#00ff88",
+                    "color": "#000"
+                  },
+                  "action": {
+                    "type": "script",
+                    "script": "const path = prompt('Enter tag path:'); if(path) { window.tagManager.createTag(path, 0, 'number'); alert('Tag created: ' + path); }"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "+ UDT Instance",
+                  "variant": "secondary",
+                  "action": {
+                    "type": "script",
+                    "script": "alert('UDT Instance creation wizard coming soon');"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Import",
+                  "variant": "secondary",
+                  "action": {
+                    "type": "script",
+                    "script": "alert('Tag import feature coming soon');"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Export",
+                  "variant": "secondary",
+                  "action": {
+                    "type": "script",
+                    "script": "const data = window.tagManager?.exportTags(); const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'tags.json'; a.click();"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "flex": 1
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "width": "300px"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Tag Folders",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 5,
+                  "style": {
+                    "maxHeight": "500px",
+                    "overflowY": "auto"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 8,
+                      "borderRadius": "4px",
+                      "style": { "cursor": "pointer" }
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "📁 System",
+                          "style": { "color": "#fff" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#00ff88",
+                      "padding": 8,
+                      "borderRadius": "4px",
+                      "style": { "cursor": "pointer" }
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "📁 Process",
+                          "style": { "color": "#000", "fontWeight": "bold" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 8,
+                      "borderRadius": "4px",
+                      "style": { "cursor": "pointer" }
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "📁 Equipment",
+                          "style": { "color": "#fff" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 8,
+                      "borderRadius": "4px",
+                      "style": { "cursor": "pointer", "marginLeft": "20px" }
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "📁 Pump1",
+                          "style": { "color": "#aaa", "fontSize": "14px" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 8,
+                      "borderRadius": "4px",
+                      "style": { "cursor": "pointer", "marginLeft": "20px" }
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "📁 Pump2",
+                          "style": { "color": "#aaa", "fontSize": "14px" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 8,
+                      "borderRadius": "4px",
+                      "style": { "cursor": "pointer" }
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "📁 Alarms",
+                          "style": { "color": "#fff" }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Process Tags",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "name", "header": "Tag Name" },
+                    { "field": "value", "header": "Value" },
+                    { "field": "type", "header": "Type" },
+                    { "field": "quality", "header": "Quality" }
+                  ],
+                  "data": [
+                    { "name": "Temperature", "value": "72.5", "type": "Number", "quality": "Good" },
+                    { "name": "Pressure", "value": "45.2", "type": "Number", "quality": "Good" },
+                    { "name": "Flow", "value": "125.8", "type": "Number", "quality": "Good" },
+                    { "name": "Level", "value": "65.3", "type": "Number", "quality": "Good" }
+                  ],
+                  "showHeader": true,
+                  "selectable": true,
+                  "style": {
+                    "width": "100%"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "width": "350px"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Tag Properties",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 15
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "gap": 5
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Path:",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Process/Temperature",
+                          "style": { "color": "#fff", "fontFamily": "monospace" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "gap": 5
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Current Value:",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      },
+                      {
+                        "type": "numeric-input",
+                        "props": {
+                          "value": 72.5,
+                          "min": 0,
+                          "max": 200,
+                          "step": 0.1,
+                          "style": { "width": "100%" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "gap": 5
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Data Type:",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Number (Float)",
+                          "style": { "color": "#fff" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "gap": 5
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Engineering Units:",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "°F",
+                          "style": { "color": "#fff" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "gap": 5
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Min/Max:",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "0 - 200",
+                          "style": { "color": "#fff" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "column",
+                      "gap": 5
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Last Update:",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "System/Time"
+                          },
+                          "style": { "color": "#fff", "fontSize": "12px" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "type": "flex",
+                      "direction": "row",
+                      "gap": 10,
+                      "style": { "marginTop": "20px" }
+                    },
+                    "children": [
+                      {
+                        "type": "button",
+                        "props": {
+                          "text": "Apply",
+                          "variant": "primary",
+                          "style": {
+                            "flex": 1,
+                            "backgroundColor": "#00ff88",
+                            "color": "#000"
+                          },
+                          "action": {
+                            "type": "script",
+                            "script": "alert('Tag value updated');"
+                          }
+                        }
+                      },
+                      {
+                        "type": "button",
+                        "props": {
+                          "text": "Delete",
+                          "variant": "error",
+                          "style": { "flex": 1 },
+                          "action": {
+                            "type": "script",
+                            "script": "if(confirm('Delete this tag?')) { alert('Tag deleted'); }"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

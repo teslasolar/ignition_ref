@@ -1,0 +1,496 @@
+{
+  "id": "gateway",
+  "name": "Gateway Management",
+  "icon": "⚙️",
+  "category": "System",
+  "description": "Gateway configuration and management interface",
+  "metadata": {
+    "title": "Gateway Management - Konomi Ignaite Gitway",
+    "backgroundColor": "#1a1a1a",
+    "padding": "20px"
+  },
+  "params": {
+    "autoRefresh": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "refreshInterval": {
+      "type": "number",
+      "defaultValue": 5000
+    }
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20,
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "style": {
+            "marginBottom": "20px"
+          }
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Gateway Management",
+              "variant": "heading",
+              "style": {
+                "color": "#00ff88",
+                "fontSize": "28px"
+              }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "type": "flex",
+              "direction": "row",
+              "gap": 10,
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Status:",
+                  "style": { "color": "#888" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "● Running",
+                  "style": { "color": "#00ff88", "fontWeight": "bold" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "height": "200px"
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "System Status",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "metric", "header": "Metric" },
+                    { "field": "value", "header": "Value" }
+                  ],
+                  "data": [
+                    { "metric": "Uptime", "value": "0d 0h 15m" },
+                    { "metric": "CPU Usage", "value": "25%" },
+                    { "metric": "Memory Usage", "value": "68%" },
+                    { "metric": "Active Tags", "value": "45" },
+                    { "metric": "Active Views", "value": "6" }
+                  ],
+                  "showHeader": false,
+                  "selectable": false,
+                  "style": {
+                    "fontSize": "14px"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Module Status",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "module", "header": "Module" },
+                    { "field": "status", "header": "Status" }
+                  ],
+                  "data": [
+                    { "module": "Tag Manager", "status": "✓ Active" },
+                    { "module": "View Discovery", "status": "✓ Active" },
+                    { "module": "UDT System", "status": "✓ Active" },
+                    { "module": "API Server", "status": "✓ Active" },
+                    { "module": "MCP Server", "status": "✓ Active" }
+                  ],
+                  "showHeader": false,
+                  "selectable": false,
+                  "style": {
+                    "fontSize": "14px"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #00ff88",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Quick Actions",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 10
+                },
+                "children": [
+                  {
+                    "type": "button",
+                    "props": {
+                      "text": "Discover Views",
+                      "variant": "primary",
+                      "style": {
+                        "width": "100%",
+                        "backgroundColor": "#00ff88",
+                        "color": "#000"
+                      },
+                      "action": {
+                        "type": "script",
+                        "script": "window.viewDiscovery?.discoverViews(); alert('View discovery triggered');"
+                      }
+                    }
+                  },
+                  {
+                    "type": "button",
+                    "props": {
+                      "text": "Clear Logs",
+                      "variant": "secondary",
+                      "style": { "width": "100%" },
+                      "action": {
+                        "type": "script",
+                        "script": "window.logger?.clear(); alert('Logs cleared');"
+                      }
+                    }
+                  },
+                  {
+                    "type": "button",
+                    "props": {
+                      "text": "Export Config",
+                      "variant": "secondary",
+                      "style": { "width": "100%" },
+                      "action": {
+                        "type": "script",
+                        "script": "const data = window.tagManager?.exportTags(); const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'gateway-config.json'; a.click();"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "flex": 1
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "flex": 2
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Recent Logs",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "style": {
+                    "height": "300px",
+                    "overflowY": "auto",
+                    "backgroundColor": "#1a1a1a",
+                    "padding": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  },
+                  "id": "log-container"
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "[INFO] Gateway initialized",
+                      "style": { "color": "#81c784", "display": "block" }
+                    }
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "[INFO] View Discovery started",
+                      "style": { "color": "#81c784", "display": "block" }
+                    }
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "[INFO] UDT Manager initialized",
+                      "style": { "color": "#81c784", "display": "block" }
+                    }
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "[INFO] API Server started",
+                      "style": { "color": "#81c784", "display": "block" }
+                    }
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "[INFO] MCP Server started",
+                      "style": { "color": "#81c784", "display": "block" }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "UDT Instances",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 10,
+                  "style": {
+                    "maxHeight": "250px",
+                    "overflowY": "auto"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 10,
+                      "borderRadius": "4px"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Motor UDT",
+                          "style": { "color": "#00ff88", "fontWeight": "bold", "display": "block" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "3 instances",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 10,
+                      "borderRadius": "4px"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Valve UDT",
+                          "style": { "color": "#00ff88", "fontWeight": "bold", "display": "block" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "2 instances",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 10,
+                      "borderRadius": "4px"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Tank UDT",
+                          "style": { "color": "#00ff88", "fontWeight": "bold", "display": "block" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "1 instance",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "backgroundColor": "#1a1a1a",
+                      "padding": 10,
+                      "borderRadius": "4px"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "PID Loop UDT",
+                          "style": { "color": "#00ff88", "fontWeight": "bold", "display": "block" }
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "0 instances",
+                          "style": { "color": "#888", "fontSize": "12px" }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "+ Create Instance",
+                  "variant": "primary",
+                  "style": {
+                    "width": "100%",
+                    "marginTop": "15px",
+                    "backgroundColor": "#00ff88",
+                    "color": "#000"
+                  },
+                  "action": {
+                    "type": "script",
+                    "script": "alert('UDT Instance creation UI coming soon');"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

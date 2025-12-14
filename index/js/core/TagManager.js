@@ -254,4 +254,40 @@ class TagManager {
             this.createTag(path, tagData.value, tagData.type, tagData.metadata);
         });
     }
+
+    // Enhanced metadata management for UDT support
+    setTagMetadata(path, metadata) {
+        const tag = this.getTag(path);
+        if (tag) {
+            tag.metadata = { ...tag.metadata, ...metadata };
+            return true;
+        }
+        return false;
+    }
+
+    deleteTag(path) {
+        if (this.tags.has(path)) {
+            // Remove bindings
+            if (this.bindings.has(path)) {
+                this.bindings.delete(path);
+            }
+            // Remove tag
+            this.tags.delete(path);
+            // Emit event
+            this.eventBus.emit('tag:deleted', { path });
+            return true;
+        }
+        return false;
+    }
+
+    // Get all tags under a specific path (for UDT management)
+    getTagsUnderPath(basePath) {
+        const results = [];
+        this.tags.forEach((tag, path) => {
+            if (path.startsWith(basePath + '/')) {
+                results.push(tag);
+            }
+        });
+        return results;
+    }
 }

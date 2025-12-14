@@ -1,0 +1,307 @@
+{
+  "id": "diagnostics",
+  "name": "System Diagnostics",
+  "icon": "📊",
+  "category": "System",
+  "description": "Real-time system diagnostics and performance monitoring",
+  "metadata": {
+    "title": "System Diagnostics - Konomi Ignaite Gitway",
+    "backgroundColor": "#1a1a1a",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20,
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "label",
+        "props": {
+          "text": "System Diagnostics",
+          "variant": "heading",
+          "style": {
+            "color": "#00ff88",
+            "marginBottom": "20px"
+          }
+        }
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20,
+          "height": "250px"
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 15,
+              "border": "1px solid #00ff88",
+              "borderRadius": "8px",
+              "width": "33%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "CPU Performance",
+                  "variant": "subheading",
+                  "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+                }
+              },
+              {
+                "type": "gauge",
+                "props": {
+                  "bindings": {
+                    "value": "System/CPU"
+                  },
+                  "min": 0,
+                  "max": 100,
+                  "units": "%",
+                  "label": "CPU Usage",
+                  "size": 150,
+                  "thresholds": [
+                    { "value": 80, "color": "#ff5252" },
+                    { "value": 60, "color": "#ffca28" },
+                    { "value": 0, "color": "#00ff88" }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 15,
+              "border": "1px solid #00ff88",
+              "borderRadius": "8px",
+              "width": "33%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Memory Usage",
+                  "variant": "subheading",
+                  "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+                }
+              },
+              {
+                "type": "gauge",
+                "props": {
+                  "bindings": {
+                    "value": "System/Memory"
+                  },
+                  "min": 0,
+                  "max": 100,
+                  "units": "%",
+                  "label": "Memory",
+                  "size": 150,
+                  "thresholds": [
+                    { "value": 90, "color": "#ff5252" },
+                    { "value": 70, "color": "#ffca28" },
+                    { "value": 0, "color": "#00ff88" }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 15,
+              "border": "1px solid #00ff88",
+              "borderRadius": "8px",
+              "width": "34%"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "System Uptime",
+                  "variant": "subheading",
+                  "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "height": "120px"
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "bindings": {
+                        "text": "System/Uptime"
+                      },
+                      "suffix": " seconds",
+                      "style": {
+                        "fontSize": "32px",
+                        "color": "#00ff88",
+                        "fontWeight": "bold"
+                      },
+                      "format": {
+                        "type": "number",
+                        "decimals": 0
+                      }
+                    }
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "Total Runtime",
+                      "style": { "color": "#888", "marginTop": "10px" }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#252525",
+          "padding": 20,
+          "border": "1px solid #3a3a3a",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Performance Metrics",
+              "variant": "subheading",
+              "style": {
+                "color": "#00ff88",
+                "marginBottom": "15px",
+                "display": "block"
+              }
+            }
+          },
+          {
+            "type": "chart",
+            "props": {
+              "type": "line",
+              "title": "System Performance",
+              "width": "100%",
+              "height": 200,
+              "data": [25, 28, 27, 30, 32, 29, 27, 26, 28, 30],
+              "labels": ["", "", "", "", "", "", "", "", "", ""],
+              "color": "#00ff88"
+            }
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 20
+        },
+        "children": [
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Browser Information",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "property", "header": "Property" },
+                    { "field": "value", "header": "Value" }
+                  ],
+                  "data": [
+                    { "property": "Platform", "value": "Windows" },
+                    { "property": "Language", "value": "en-US" },
+                    { "property": "Screen Resolution", "value": "1920x1080" },
+                    { "property": "Online Status", "value": "Connected" },
+                    { "property": "Cookies Enabled", "value": "Yes" }
+                  ],
+                  "showHeader": false,
+                  "selectable": false
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#252525",
+              "padding": 20,
+              "border": "1px solid #3a3a3a",
+              "borderRadius": "8px",
+              "flex": 1
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Resource Usage",
+                  "variant": "subheading",
+                  "style": {
+                    "color": "#00ff88",
+                    "marginBottom": "15px",
+                    "display": "block"
+                  }
+                }
+              },
+              {
+                "type": "table",
+                "props": {
+                  "columns": [
+                    { "field": "resource", "header": "Resource" },
+                    { "field": "usage", "header": "Usage" }
+                  ],
+                  "data": [
+                    { "resource": "Active Tags", "usage": "45 / 1000" },
+                    { "resource": "Tag Bindings", "usage": "23 active" },
+                    { "resource": "Views Loaded", "usage": "6 / 10" },
+                    { "resource": "UDT Instances", "usage": "8 active" },
+                    { "resource": "Log Entries", "usage": "342 / 1000" }
+                  ],
+                  "showHeader": false,
+                  "selectable": false
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -2,28 +2,59 @@
   "views": [
     {
       "id": "overview",
-      "name": "Overview",
-      "description": "System overview dashboard"
+      "name": "System Overview",
+      "description": "Main dashboard with system status and key metrics",
+      "icon": "📊",
+      "category": "General"
     },
     {
       "id": "process",
       "name": "Process Control",
-      "description": "Process monitoring and control"
+      "description": "Process monitoring and control interface",
+      "icon": "⚙️",
+      "category": "Operations"
     },
     {
       "id": "equipment",
-      "name": "Equipment",
-      "description": "Equipment status and control"
+      "name": "Equipment Status",
+      "description": "Equipment monitoring and control panel",
+      "icon": "🏭",
+      "category": "Operations"
     },
     {
       "id": "alarms",
       "name": "Alarms",
-      "description": "Active alarms and history"
+      "description": "Alarm management and acknowledgment",
+      "icon": "🚨",
+      "category": "Operations"
     },
     {
       "id": "trends",
       "name": "Trends",
-      "description": "Historical trends and charts"
+      "description": "Historical data trending and analysis",
+      "icon": "📈",
+      "category": "Analytics"
+    },
+    {
+      "id": "gateway",
+      "name": "Gateway Management",
+      "description": "Gateway configuration and management interface",
+      "icon": "⚙️",
+      "category": "System"
+    },
+    {
+      "id": "diagnostics",
+      "name": "System Diagnostics",
+      "description": "Real-time system diagnostics and performance monitoring",
+      "icon": "📊",
+      "category": "System"
+    },
+    {
+      "id": "tag-browser",
+      "name": "Tag Browser",
+      "description": "Browse and manage system tags",
+      "icon": "🏷️",
+      "category": "Configuration"
     }
   ],
   "templates": [
