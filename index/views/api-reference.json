@@ -1,0 +1,570 @@
+{
+  "id": "api-reference",
+  "name": "API Reference",
+  "icon": "🔌",
+  "category": "Documentation",
+  "description": "Complete API reference for AI/MCP integration",
+  "metadata": {
+    "title": "API Reference - Konomi Ignaite Gitway",
+    "backgroundColor": "#1a1a1a",
+    "padding": "20px"
+  },
+  "root": {
+    "type": "container",
+    "props": {
+      "type": "flex",
+      "direction": "column",
+      "gap": 20,
+      "height": "100%",
+      "style": {
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "style": { "marginBottom": "20px" }
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "API Reference - AI/MCP Integration",
+              "variant": "heading",
+              "style": { "color": "#00ff88", "fontSize": "28px" }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "text": "Static API for Ignition Programming",
+              "style": { "color": "#888" }
+            }
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#252525",
+          "padding": 20,
+          "border": "1px solid #00ff88",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "🤖 MCP Tools for AI Integration",
+              "variant": "subheading",
+              "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "mcp-tool",
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "borderRadius": "4px",
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "read_tag",
+                  "style": { "color": "#00ff88", "fontFamily": "monospace", "fontSize": "16px", "display": "block" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Read a tag value from the system",
+                  "style": { "color": "#aaa", "marginTop": "5px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "className": "code-example",
+                  "style": {
+                    "backgroundColor": "#0a0a0a",
+                    "padding": "10px",
+                    "marginTop": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "await mcpSend('read_tag', { path: 'Process/Temperature' });",
+                      "style": { "color": "#66bb6a", "whiteSpace": "pre" }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "mcp-tool",
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "borderRadius": "4px",
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "write_tag",
+                  "style": { "color": "#00ff88", "fontFamily": "monospace", "fontSize": "16px", "display": "block" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Write a value to a tag",
+                  "style": { "color": "#aaa", "marginTop": "5px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "className": "code-example",
+                  "style": {
+                    "backgroundColor": "#0a0a0a",
+                    "padding": "10px",
+                    "marginTop": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "await mcpSend('write_tag', { path: 'Process/Temperature', value: 75.5 });",
+                      "style": { "color": "#66bb6a", "whiteSpace": "pre" }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "mcp-tool",
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "borderRadius": "4px",
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "create_udt_instance",
+                  "style": { "color": "#00ff88", "fontFamily": "monospace", "fontSize": "16px", "display": "block" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Create a UDT instance for equipment",
+                  "style": { "color": "#aaa", "marginTop": "5px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "className": "code-example",
+                  "style": {
+                    "backgroundColor": "#0a0a0a",
+                    "padding": "10px",
+                    "marginTop": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "await mcpSend('create_udt_instance', {\n  udtName: 'Motor',\n  path: 'Equipment/Pump1',\n  parameters: { MotorName: 'Main Pump', MaxSpeed: 3600 }\n});",
+                      "style": { "color": "#66bb6a", "whiteSpace": "pre" }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#252525",
+          "padding": 20,
+          "border": "1px solid #3a3a3a",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "📡 REST API Endpoints",
+              "variant": "subheading",
+              "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "api-endpoint",
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "borderRadius": "4px",
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "GET /api/v1/tags",
+                  "style": { "color": "#ffca28", "fontFamily": "monospace", "fontSize": "16px", "display": "block" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "List all tags with optional pattern filter",
+                  "style": { "color": "#aaa", "marginTop": "5px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "className": "code-example",
+                  "style": {
+                    "backgroundColor": "#0a0a0a",
+                    "padding": "10px",
+                    "marginTop": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "const response = await gatewayFetch('/api/v1/tags?pattern=Process/*');\nconst tags = await response.json();",
+                      "style": { "color": "#64b5f6", "whiteSpace": "pre" }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "api-endpoint",
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "borderRadius": "4px",
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "POST /api/v1/tags/:path",
+                  "style": { "color": "#ffca28", "fontFamily": "monospace", "fontSize": "16px", "display": "block" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Write a value to a specific tag",
+                  "style": { "color": "#aaa", "marginTop": "5px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "className": "code-example",
+                  "style": {
+                    "backgroundColor": "#0a0a0a",
+                    "padding": "10px",
+                    "marginTop": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "await gatewayFetch('/api/v1/tags/Process$Temperature', {\n  method: 'POST',\n  body: JSON.stringify({ value: 75.5 })\n});",
+                      "style": { "color": "#64b5f6", "whiteSpace": "pre" }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "api-endpoint",
+              "backgroundColor": "#1a1a1a",
+              "padding": 15,
+              "borderRadius": "4px",
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "POST /api/v1/udts/:name/instances",
+                  "style": { "color": "#ffca28", "fontFamily": "monospace", "fontSize": "16px", "display": "block" }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "text": "Create a new UDT instance",
+                  "style": { "color": "#aaa", "marginTop": "5px", "display": "block" }
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "className": "code-example",
+                  "style": {
+                    "backgroundColor": "#0a0a0a",
+                    "padding": "10px",
+                    "marginTop": "10px",
+                    "borderRadius": "4px",
+                    "fontFamily": "monospace",
+                    "fontSize": "12px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "text": "await gatewayFetch('/api/v1/udts/Motor/instances', {\n  method: 'POST',\n  body: JSON.stringify({\n    path: 'Equipment/Pump1',\n    parameters: { MotorName: 'Main Pump' }\n  })\n});",
+                      "style": { "color": "#64b5f6", "whiteSpace": "pre" }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#252525",
+          "padding": 20,
+          "border": "1px solid #3a3a3a",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "💻 CLI Commands",
+              "variant": "subheading",
+              "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "code-example",
+              "style": {
+                "backgroundColor": "#0a0a0a",
+                "padding": "15px",
+                "borderRadius": "4px",
+                "fontFamily": "monospace",
+                "fontSize": "12px"
+              }
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "# Tag Operations\nawait runCommand('tag read Process/Temperature');\nawait runCommand('tag write Process/Temperature 75.5');\nawait runCommand('tag monitor Process/Temperature');\n\n# UDT Operations\nawait runCommand('udt list');\nawait runCommand('udt create Motor Equipment/Pump1 MotorName=\"Main Pump\"');\n\n# View Operations\nawait runCommand('view list');\nawait runCommand('view load overview');\n\n# System Operations\nawait runCommand('system status');\nawait runCommand('system metrics');",
+                  "style": { "color": "#9ccc65", "whiteSpace": "pre", "lineHeight": "1.5" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#252525",
+          "padding": 20,
+          "border": "1px solid #00ff88",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "🚀 Quick Test Console",
+              "variant": "subheading",
+              "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "type": "flex",
+              "direction": "row",
+              "gap": 10,
+              "style": { "marginBottom": "10px" }
+            },
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "text": "Test Read Tag",
+                  "variant": "primary",
+                  "style": { "backgroundColor": "#00ff88", "color": "#000" },
+                  "action": {
+                    "type": "script",
+                    "script": "mcpSend('read_tag', {path: 'Process/Temperature'}).then(r => alert('Temperature: ' + r.result.value));"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Test Write Tag",
+                  "variant": "secondary",
+                  "action": {
+                    "type": "script",
+                    "script": "mcpSend('write_tag', {path: 'Process/Temperature', value: Math.random() * 100}).then(r => alert('Tag written'));"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Test API Status",
+                  "variant": "secondary",
+                  "action": {
+                    "type": "script",
+                    "script": "gatewayFetch('/api/v1/gateway/status').then(r => r.json()).then(d => alert('Gateway: ' + d.status));"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Run Acceptance Tests",
+                  "variant": "error",
+                  "action": {
+                    "type": "script",
+                    "script": "window.acceptanceTests.runAllTests().then(r => alert('Tests: ' + r.passedViews + '/' + r.totalViews + ' passed'));"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "backgroundColor": "#1a1a1a",
+              "padding": 10,
+              "borderRadius": "4px",
+              "style": {
+                "height": "100px",
+                "overflowY": "auto"
+              },
+              "id": "test-output"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Test output will appear here...",
+                  "style": { "color": "#666", "fontFamily": "monospace", "fontSize": "12px" }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "container",
+        "props": {
+          "backgroundColor": "#1a1a1a",
+          "padding": 20,
+          "border": "1px solid #00ff88",
+          "borderRadius": "8px"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "📚 AI Integration Guide",
+              "variant": "subheading",
+              "style": { "color": "#00ff88", "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "text": "This Konomi Ignaite Gitway serves as a static API reference for AI tools to program Ignition systems. Use the MCP tools for direct integration, REST API for HTTP-based access, or CLI commands for scripted operations.",
+              "style": { "color": "#aaa", "marginBottom": "15px", "display": "block" }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "text": "Available UDT Types: Motor, Valve, Tank, PIDLoop",
+              "style": { "color": "#fff", "marginBottom": "5px", "display": "block" }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "text": "Tag Paths: System/*, Process/*, Equipment/*, Alarms/*",
+              "style": { "color": "#fff", "marginBottom": "5px", "display": "block" }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "text": "GitHub Pages URL: https://teslasolar.github.io/ignition_ref/",
+              "style": { "color": "#00ff88", "fontFamily": "monospace", "marginTop": "10px", "display": "block" }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

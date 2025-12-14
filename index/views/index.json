@@ -55,6 +55,13 @@
       "description": "Browse and manage system tags",
       "icon": "🏷️",
       "category": "Configuration"
+    },
+    {
+      "id": "api-reference",
+      "name": "API Reference",
+      "description": "Complete API reference for AI/MCP integration",
+      "icon": "🔌",
+      "category": "Documentation"
     }
   ],
   "templates": [
