@@ -35,8 +35,8 @@ class DockingManager {
             // Load dock templates
             await this.loadTemplates();
 
-            // Create dock container structure
-            this.createDockStructure();
+            // Don't create dock structure here - only when needed for docked views
+            // this.createDockStructure();
 
             // Setup event listeners
             this.setupEventListeners();
@@ -86,8 +86,15 @@ class DockingManager {
             throw new Error('View content container not found');
         }
 
-        // Clear existing content
-        viewContent.innerHTML = '';
+        // Check if dock structure already exists
+        if (document.getElementById('dock-container')) {
+            return; // Structure already created
+        }
+
+        // Clear existing content only if not a dock container
+        if (!viewContent.querySelector('.dock-container')) {
+            viewContent.innerHTML = '';
+        }
 
         // Create main dock container
         const dockContainer = document.createElement('div');

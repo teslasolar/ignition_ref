@@ -107,6 +107,53 @@
     overflow: auto;
     padding: 0.75rem;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix component sizing within docks */
+.dock-content .component {
+    width: fit-content !important;
+    height: fit-content !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.dock-content .container[data-type="flex"] {
+    display: flex !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.dock-content .gauge {
+    width: auto !important;
+    height: auto !important;
+    max-width: 200px;
+    display: inline-block;
+}
+
+.dock-content .button {
+    width: auto !important;
+    padding: 8px 16px !important;
+    display: inline-block !important;
+    margin: 4px !important;
+}
+
+.dock-content .label {
+    width: auto !important;
+    display: inline-block !important;
+    margin: 4px !important;
+}
+
+.dock-content .table {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.dock-content .chart {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 .dock-text-content {

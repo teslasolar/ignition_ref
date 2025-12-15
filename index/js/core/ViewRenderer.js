@@ -35,8 +35,16 @@ class ViewRenderer {
 
         // Check if view uses docking layout
         if (viewData.docking && this.dockingManager) {
+            // Create dock structure if not exists
+            this.dockingManager.createDockStructure();
             await this.renderDockedView(viewData, container);
         } else {
+            // Clear any existing dock structure for non-docked views
+            const dockContainer = document.getElementById('dock-container');
+            if (dockContainer) {
+                dockContainer.remove();
+            }
+
             // Render traditional non-docked view
             if (viewData.root) {
                 await this.renderComponent(viewData.root, container);

@@ -5,6 +5,9 @@
     position: relative;
     display: inline-block;
     transition: all 0.3s ease;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
 }
 
 .component.selected {
@@ -15,14 +18,25 @@
 /* Container Components */
 .container-component {
     width: 100%;
-    height: 100%;
+    height: auto;
     position: relative;
+    box-sizing: border-box;
+}
+
+/* Container with explicit dimensions */
+.container[data-width] {
+    width: attr(data-width) !important;
+}
+
+.container[data-height] {
+    height: attr(data-height) !important;
 }
 
 .flex-container {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 0;
 }
 
 .flex-container.row {
