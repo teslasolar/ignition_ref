@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Value Test Suite - Konomi Ignaite Gitway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .test-container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        .view-test {
+            background: #252525;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #333;
+        }
+
+        .view-test.passed {
+            border-left-color: #00ff88;
+        }
+
+        .view-test.failed {
+            border-left-color: #ff5252;
+        }
+
+        .view-test.warning {
+            border-left-color: #ffca28;
+        }
+
+        .view-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .test-detail {
+            margin-left: 20px;
+            margin-top: 5px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .tag-value {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #ff5252;
+        }
+
+        .warning {
+            color: #ffca28;
+        }
+
+        .success {
+            color: #00ff88;
+        }
+
+        .summary {
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #00ff88;
+        }
+
+        .summary-stat {
+            display: inline-block;
+            margin-right: 30px;
+            font-size: 18px;
+        }
+
+        .live-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .running { background: #ffca28; }
+        .complete { background: #00ff88; }
+        .failed { background: #ff5252; }
+
+        button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #00cc66;
+        }
+
+        .iframe-container {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 400px;
+            height: 300px;
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .value-display {
+            background: #0a0a0a;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧪 Live Value Test Suite</h1>
+        <p>Konomi Ignaite Gitway - Comprehensive Testing for All Views</p>
+    </div>
+
+    <div class="test-container">
+        <h2>Test Controls</h2>
+        <div style="margin-top: 15px;">
+            <button onclick="runTests()">▶ Run All Tests</button>
+            <button onclick="testCurrentView()">Test Current View</button>
+            <button onclick="clearResults()">Clear Results</button>
+            <button onclick="window.location.href='index.html'">← Back to App</button>
+        </div>
+    </div>
+
+    <div id="status" class="test-container">
+        <span class="live-indicator running"></span>
+        <span id="status-text">Ready to test...</span>
+    </div>
+
+    <div id="results" class="test-container">
+        <h2>Test Results</h2>
+        <div id="test-output"></div>
+    </div>
+
+    <div id="summary" class="summary" style="display: none;">
+        <h2>Test Summary</h2>
+        <div id="summary-content"></div>
+    </div>
+
+    <!-- Hidden iframe to load the main app -->
+    <div class="iframe-container">
+        <iframe id="app-frame" src="index.html"></iframe>
+    </div>
+
+    <script>
+        let appWindow = null;
+        let testResults = [];
+
+        // Wait for iframe to load
+        window.addEventListener('load', () => {
+            const iframe = document.getElementById('app-frame');
+            iframe.onload = () => {
+                appWindow = iframe.contentWindow;
+                updateStatus('Application loaded - Ready to test', 'complete');
+
+                // Check if test framework is available
+                if (appWindow.liveValueTester) {
+                    console.log('Live Value Tester available');
+                } else {
+                    console.error('Live Value Tester not found');
+                }
+            };
+        });
+
+        function updateStatus(text, state = 'running') {
+            const indicator = document.querySelector('.live-indicator');
+            const statusText = document.getElementById('status-text');
+
+            indicator.className = 'live-indicator ' + state;
+            statusText.textContent = text;
+        }
+
+        async function runTests() {
+            if (!appWindow || !appWindow.liveValueTester) {
+                alert('Application not loaded or test framework not available');
+                return;
+            }
+
+            updateStatus('Running tests... This may take a minute', 'running');
+            clearResults();
+
+            try {
+                // Run the tests
+                const results = await appWindow.liveValueTester.testAllViews();
+                testResults = results;
+
+                // Display results
+                displayResults(results);
+                displaySummary(results);
+
+                updateStatus('Tests complete!', results.failed === 0 ? 'complete' : 'failed');
+            } catch (error) {
+                console.error('Test error:', error);
+                updateStatus('Test failed: ' + error.message, 'failed');
+            }
+        }
+
+        async function testCurrentView() {
+            if (!appWindow || !appWindow.liveValueTester) {
+                alert('Application not loaded or test framework not available');
+                return;
+            }
+
+            updateStatus('Testing current view...', 'running');
+
+            try {
+                const result = await appWindow.liveValueTester.testCurrentView();
+                displaySingleResult(result);
+                updateStatus('Test complete!', result.passed ? 'complete' : 'failed');
+            } catch (error) {
+                console.error('Test error:', error);
+                updateStatus('Test failed: ' + error.message, 'failed');
+            }
+        }
+
+        function displayResults(results) {
+            const output = document.getElementById('test-output');
+            output.innerHTML = '';
+
+            results.results.forEach(viewResult => {
+                const viewDiv = document.createElement('div');
+                viewDiv.className = 'view-test ' + (viewResult.passed ? 'passed' : (viewResult.warnings > 0 ? 'warning' : 'failed'));
+
+                const status = viewResult.passed ? '✓' : '✗';
+                const statusClass = viewResult.passed ? 'success' : 'error';
+
+                let html = `
+                    <div class="view-name">
+                        <span class="${statusClass}">${status}</span> ${viewResult.viewName} (${viewResult.viewId})
+                    </div>
+                `;
+
+                // Tag tests
+                if (viewResult.tagTests && viewResult.tagTests.length > 0) {
+                    const passedTags = viewResult.tagTests.filter(t => t.passed).length;
+                    html += `<div class="test-detail">Tags: ${passedTags}/${viewResult.tagTests.length} passed</div>`;
+
+                    // Show some tag values
+                    viewResult.tagTests.slice(0, 3).forEach(tag => {
+                        if (tag.value !== null && tag.value !== undefined) {
+                            const valueStr = typeof tag.value === 'number' ? tag.value.toFixed(2) : tag.value.toString();
+                            html += `<div class="test-detail">• ${tag.path}: <span class="tag-value">${valueStr}</span></div>`;
+                        }
+                    });
+                }
+
+                // DOM tests
+                if (viewResult.domTests && viewResult.domTests.length > 0) {
+                    const passedDOM = viewResult.domTests.filter(t => t.passed).length;
+                    html += `<div class="test-detail">DOM Elements: ${passedDOM}/${viewResult.domTests.length} passed</div>`;
+                }
+
+                // Live value changes
+                if (viewResult.valueChanges && viewResult.valueChanges.tested) {
+                    const changeClass = viewResult.valueChanges.changed > 0 ? 'success' : 'warning';
+                    html += `<div class="test-detail">
+                        Live Updates: <span class="${changeClass}">${viewResult.valueChanges.changed}/${viewResult.valueChanges.totalTags} values changing (${viewResult.valueChanges.percentage}%)</span>
+                    </div>`;
+                }
+
+                // Errors
+                if (viewResult.errors && viewResult.errors.length > 0) {
+                    html += `<div class="test-detail error">Errors: ${viewResult.errors.join(', ')}</div>`;
+                }
+
+                viewDiv.innerHTML = html;
+                output.appendChild(viewDiv);
+            });
+        }
+
+        function displaySingleResult(result) {
+            const output = document.getElementById('test-output');
+            const viewDiv = document.createElement('div');
+            viewDiv.className = 'view-test ' + (result.passed ? 'passed' : 'failed');
+
+            let html = `
+                <div class="view-name">
+                    ${result.passed ? '✓' : '✗'} ${result.viewName} (Current View)
+                </div>
+            `;
+
+            // Add test details
+            if (result.tagTests && result.tagTests.length > 0) {
+                html += '<div class="value-display">';
+                result.tagTests.forEach(tag => {
+                    if (tag.value !== null && tag.value !== undefined) {
+                        const valueStr = typeof tag.value === 'number' ? tag.value.toFixed(2) : tag.value.toString();
+                        const statusIcon = tag.passed ? '✓' : '✗';
+                        html += `${statusIcon} ${tag.path}: ${valueStr}<br>`;
+                    }
+                });
+                html += '</div>';
+            }
+
+            viewDiv.innerHTML = html;
+            output.innerHTML = '';
+            output.appendChild(viewDiv);
+        }
+
+        function displaySummary(results) {
+            const summaryDiv = document.getElementById('summary');
+            const content = document.getElementById('summary-content');
+
+            const passRate = ((results.passed / results.totalViews) * 100).toFixed(1);
+            const status = results.failed === 0 ? 'ALL TESTS PASSED ✓' : `${results.failed} TESTS FAILED ✗`;
+
+            content.innerHTML = `
+                <div class="summary-stat">Total Views: <span class="tag-value">${results.totalViews}</span></div>
+                <div class="summary-stat">Passed: <span class="success">${results.passed}</span></div>
+                <div class="summary-stat">Failed: <span class="error">${results.failed}</span></div>
+                <div class="summary-stat">Warnings: <span class="warning">${results.warnings}</span></div>
+                <div class="summary-stat">Pass Rate: <span class="tag-value">${passRate}%</span></div>
+                <div style="margin-top: 15px; font-size: 20px; font-weight: bold;">
+                    ${status}
+                </div>
+            `;
+
+            summaryDiv.style.display = 'block';
+        }
+
+        function clearResults() {
+            document.getElementById('test-output').innerHTML = '';
+            document.getElementById('summary').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
