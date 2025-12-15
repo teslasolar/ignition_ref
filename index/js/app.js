@@ -231,10 +231,35 @@ class PerspectiveApp {
     }
 
     startTagUpdates() {
-        // Simulate tag updates
-        setInterval(() => {
-            this.tagManager.updateSimulatedTags();
-        }, this.config.refreshRate);
+        // Ensure TagProvider is initialized and start simulation
+        setTimeout(() => {
+            // Force initial values for critical tags if they're showing 0
+            const criticalTags = [
+                { path: 'Process/Temperature', value: 72.5 },
+                { path: 'Process/Pressure', value: 45.2 },
+                { path: 'Process/Flow', value: 125.8 },
+                { path: 'Process/Level', value: 65.3 }
+            ];
+
+            criticalTags.forEach(({ path, value }) => {
+                const tag = this.tagManager.getTag(path);
+                if (tag && (tag.value === 0 || tag.value === null)) {
+                    this.tagManager.writeTag(path, value);
+                }
+            });
+
+            // Start regular updates
+            setInterval(() => {
+                this.tagManager.updateSimulatedTags();
+
+                // Also trigger TagProvider simulation if it exists
+                if (window.tagProvider) {
+                    window.tagProvider.simulateProcessVariables();
+                }
+            }, this.config.refreshRate);
+
+            window.logger.info('Tag updates started with initial values set');
+        }, 100);
     }
 
     handleComponentAction(data) {

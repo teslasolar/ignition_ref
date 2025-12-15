@@ -1,0 +1,237 @@
+/**
+ * Responsive Layout Styles for Konomi Ignaite Gitway
+ * Ensures proper scaling and layout on different screen sizes
+ */
+
+/* Base responsive container */
+#view-content {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Responsive flex containers */
+.container[data-type="flex"] {
+    display: flex !important;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Responsive grid for gauges */
+.container[data-direction="row"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Gauge containers responsive */
+.container[data-direction="row"] > .container {
+    flex: 1 1 200px;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+/* Make gauges responsive */
+.gauge {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.gauge svg {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Tables responsive */
+.table {
+    width: 100%;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+.table table {
+    width: 100%;
+    min-width: 300px;
+}
+
+/* Chart containers responsive */
+.chart {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+}
+
+.chart canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px;
+}
+
+/* Screen size breakpoints */
+@media screen and (max-width: 1600px) {
+    .container[data-direction="row"] > .container {
+        flex: 1 1 180px;
+        min-width: 180px;
+        max-width: 250px;
+    }
+
+    .gauge {
+        max-width: 180px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container[data-direction="row"] {
+        justify-content: center;
+    }
+
+    .container[data-direction="row"] > .container {
+        flex: 1 1 45%;
+        max-width: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container[data-direction="row"] > .container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .gauge {
+        max-width: 200px;
+    }
+}
+
+/* Overview specific fixes */
+#view-content .container[data-width="25%"] {
+    flex: 1 1 200px !important;
+    width: auto !important;
+    min-width: 200px !important;
+    max-width: 300px !important;
+}
+
+#view-content .container[data-width="50%"] {
+    flex: 1 1 45% !important;
+    width: auto !important;
+    min-width: 300px !important;
+}
+
+/* Fix nested containers */
+.container .container {
+    width: 100% !important;
+}
+
+/* Ensure proper height */
+#view-content > .container {
+    min-height: calc(100vh - 150px);
+    height: auto !important;
+}
+
+/* Fix label spacing */
+.label {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Button layout */
+.button {
+    min-width: 80px;
+    padding: 8px 16px;
+}
+
+/* Numeric input responsive */
+.numeric-input {
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Factory dashboard specific */
+.factory-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.factory-metric-card {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+/* Gateway Management responsive */
+#log-container {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* Diagnostics view */
+.performance-gauges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/* Process control responsive */
+.process-control-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* Equipment status responsive */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* API Reference responsive */
+.api-endpoint,
+.mcp-tool {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.code-example {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Prevent horizontal scrolling */
+body {
+    overflow-x: hidden;
+}
+
+#app {
+    overflow-x: hidden;
+}
+
+/* Ensure main container fills viewport */
+main#view-container {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Fix for overview specific layout */
+.system-overview-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ensure components don't overflow */
+.component {
+    max-width: 100%;
+    overflow: hidden;
+}
