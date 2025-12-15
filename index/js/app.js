@@ -5,8 +5,9 @@ class PerspectiveApp {
     constructor() {
         this.eventBus = new EventBus();
         this.tagManager = new TagManager(this.eventBus);
+        this.dockingManager = new DockingManager(this.eventBus);
         this.componentRegistry = new ComponentRegistry();
-        this.viewRenderer = new ViewRenderer(this.componentRegistry, this.tagManager, this.eventBus);
+        this.viewRenderer = new ViewRenderer(this.componentRegistry, this.tagManager, this.eventBus, this.dockingManager);
         this.router = new Router(this.viewRenderer, this.eventBus);
 
         this.currentView = null;
@@ -28,6 +29,9 @@ class PerspectiveApp {
         window.logger.info('Initializing Perspective Web Application...');
 
         try {
+            // Initialize DockingManager first
+            await this.dockingManager.initialize();
+
             // Register all components
             this.registerComponents();
 
@@ -207,6 +211,19 @@ class PerspectiveApp {
         // Listen for view change requests
         this.eventBus.on('view:change', (data) => {
             this.loadView(data.viewId);
+        });
+
+        // Listen for dock events
+        this.eventBus.on('dock:collapsed', (data) => {
+            window.logger.debug(`Dock ${data.region} collapsed`);
+        });
+
+        this.eventBus.on('dock:expanded', (data) => {
+            window.logger.debug(`Dock ${data.region} expanded`);
+        });
+
+        this.eventBus.on('dock:resize', (data) => {
+            window.logger.debug(`Dock ${data.region} resized to ${data.size}px`);
         });
 
         // Window resize handler

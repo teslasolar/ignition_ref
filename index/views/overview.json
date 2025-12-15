@@ -4,7 +4,7 @@
   "metadata": {
     "title": "System Overview - Ignition Web HMI",
     "backgroundColor": "#1e1e1e",
-    "padding": "20px"
+    "padding": "0px"
   },
   "params": {
     "refreshRate": {
@@ -16,15 +16,418 @@
       }
     }
   },
-  "root": {
-    "type": "container",
-    "props": {
-      "type": "flex",
-      "direction": "column",
-      "gap": 20,
-      "height": "100%"
+  "docking": {
+    "template": "default",
+    "north": {
+      "component": {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 10,
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "padding": "10px 15px",
+          "backgroundColor": "#2d2d2d"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "System Overview Dashboard",
+              "variant": "heading",
+              "style": {
+                "fontSize": "1.25rem",
+                "color": "#1e88e5"
+              }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "type": "flex",
+              "direction": "row",
+              "gap": 10
+            },
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "text": "Refresh",
+                  "variant": "primary",
+                  "action": {
+                    "type": "script",
+                    "script": "window.perspectiveApp.refreshView();"
+                  }
+                }
+              },
+              {
+                "type": "label",
+                "props": {
+                  "bindings": {
+                    "text": "System/Time"
+                  },
+                  "style": {
+                    "fontSize": "0.875rem",
+                    "color": "#b0b0b0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
     },
-    "children": [
+    "west": {
+      "component": {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "column",
+          "gap": 10
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Navigation",
+              "variant": "subheading",
+              "style": {
+                "marginBottom": "10px"
+              }
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "dock-nav-tree"
+            },
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "text": "Overview",
+                  "variant": "primary",
+                  "style": {
+                    "width": "100%",
+                    "textAlign": "left"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Process",
+                  "variant": "default",
+                  "style": {
+                    "width": "100%",
+                    "textAlign": "left"
+                  },
+                  "action": {
+                    "type": "navigate",
+                    "value": "process"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Equipment",
+                  "variant": "default",
+                  "style": {
+                    "width": "100%",
+                    "textAlign": "left"
+                  },
+                  "action": {
+                    "type": "navigate",
+                    "value": "equipment"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Trends",
+                  "variant": "default",
+                  "style": {
+                    "width": "100%",
+                    "textAlign": "left"
+                  },
+                  "action": {
+                    "type": "navigate",
+                    "value": "trends"
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "props": {
+                  "text": "Alarms",
+                  "variant": "default",
+                  "style": {
+                    "width": "100%",
+                    "textAlign": "left"
+                  },
+                  "action": {
+                    "type": "navigate",
+                    "value": "alarms"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "east": {
+      "component": {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "column",
+          "gap": 15
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "System Properties",
+              "variant": "subheading"
+            }
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "dock-property-group"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Process Variables",
+                  "className": "dock-property-group-title"
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "className": "dock-property-row"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Temperature:",
+                          "className": "dock-property-label"
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Process/Temperature"
+                          },
+                          "suffix": " °F",
+                          "className": "dock-property-value"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "className": "dock-property-row"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Pressure:",
+                          "className": "dock-property-label"
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Process/Pressure"
+                          },
+                          "suffix": " PSI",
+                          "className": "dock-property-value"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "className": "dock-property-row"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Flow Rate:",
+                          "className": "dock-property-label"
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Process/Flow"
+                          },
+                          "suffix": " GPM",
+                          "className": "dock-property-value"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "container",
+            "props": {
+              "className": "dock-property-group"
+            },
+            "children": [
+              {
+                "type": "label",
+                "props": {
+                  "text": "Equipment Status",
+                  "className": "dock-property-group-title"
+                }
+              },
+              {
+                "type": "container",
+                "props": {
+                  "type": "flex",
+                  "direction": "column",
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "container",
+                    "props": {
+                      "className": "dock-property-row"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Pump 1:",
+                          "className": "dock-property-label"
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Equipment/Pump1/Status"
+                          },
+                          "className": "dock-property-value"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "container",
+                    "props": {
+                      "className": "dock-property-row"
+                    },
+                    "children": [
+                      {
+                        "type": "label",
+                        "props": {
+                          "text": "Pump 2:",
+                          "className": "dock-property-label"
+                        }
+                      },
+                      {
+                        "type": "label",
+                        "props": {
+                          "bindings": {
+                            "text": "Equipment/Pump2/Status"
+                          },
+                          "className": "dock-property-value"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "south": {
+      "component": {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "row",
+          "gap": 15,
+          "alignItems": "center",
+          "justifyContent": "space-between",
+          "padding": "5px 15px",
+          "backgroundColor": "#2d2d2d"
+        },
+        "children": [
+          {
+            "type": "label",
+            "props": {
+              "text": "Status: System Running",
+              "style": {
+                "fontSize": "0.875rem",
+                "color": "#66bb6a"
+              }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "bindings": {
+                "text": "System/ConnectionStatus"
+              },
+              "style": {
+                "fontSize": "0.875rem"
+              }
+            }
+          },
+          {
+            "type": "label",
+            "props": {
+              "text": "Last Update: Just now",
+              "style": {
+                "fontSize": "0.875rem",
+                "color": "#b0b0b0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "center": {
+      "component": {
+        "type": "container",
+        "props": {
+          "type": "flex",
+          "direction": "column",
+          "gap": 20,
+          "padding": "20px"
+        },
+        "children": [
       {
         "type": "container",
         "props": {
@@ -429,5 +832,7 @@
         ]
       }
     ]
+      }
+    }
   }
 }

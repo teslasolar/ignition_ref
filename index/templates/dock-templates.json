@@ -1,0 +1,268 @@
+{
+  "templates": {
+    "default": {
+      "name": "Default Layout",
+      "description": "Standard layout with all docks enabled for general use",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "60px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-north-default"
+        },
+        "south": {
+          "enabled": true,
+          "size": "40px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-south-default"
+        },
+        "east": {
+          "enabled": true,
+          "size": "300px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-east-default"
+        },
+        "west": {
+          "enabled": true,
+          "size": "250px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-west-default"
+        }
+      }
+    },
+    "process": {
+      "name": "Process View",
+      "description": "Layout optimized for process monitoring with west tool palette",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "80px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-north-process"
+        },
+        "south": {
+          "enabled": true,
+          "size": "120px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-south-process"
+        },
+        "east": {
+          "enabled": true,
+          "size": "350px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-east-process"
+        },
+        "west": {
+          "enabled": true,
+          "size": "200px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-west-process"
+        }
+      }
+    },
+    "dashboard": {
+      "name": "Dashboard Layout",
+      "description": "Minimal layout for dashboards with only north and south docks",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "50px",
+          "collapsible": false,
+          "collapsed": false,
+          "className": "dock-north-dashboard"
+        },
+        "south": {
+          "enabled": true,
+          "size": "35px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-south-dashboard"
+        },
+        "east": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        },
+        "west": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        }
+      }
+    },
+    "diagnostic": {
+      "name": "Diagnostic View",
+      "description": "Layout with east properties panel for detailed diagnostics",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "70px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-north-diagnostic"
+        },
+        "south": {
+          "enabled": true,
+          "size": "150px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-south-diagnostic"
+        },
+        "east": {
+          "enabled": true,
+          "size": "400px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-east-diagnostic"
+        },
+        "west": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        }
+      }
+    },
+    "editor": {
+      "name": "Editor Layout",
+      "description": "Layout for editing with west navigation tree and east properties",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "45px",
+          "collapsible": false,
+          "collapsed": false,
+          "className": "dock-north-editor"
+        },
+        "south": {
+          "enabled": true,
+          "size": "200px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-south-editor"
+        },
+        "east": {
+          "enabled": true,
+          "size": "320px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-east-editor"
+        },
+        "west": {
+          "enabled": true,
+          "size": "280px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-west-editor"
+        }
+      }
+    },
+    "fullscreen": {
+      "name": "Fullscreen Layout",
+      "description": "No docks, only center content for fullscreen display",
+      "docks": {
+        "north": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        },
+        "south": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        },
+        "east": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        },
+        "west": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        }
+      }
+    },
+    "split": {
+      "name": "Split View",
+      "description": "Split layout with west and east panels for comparison",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "50px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-north-split"
+        },
+        "south": {
+          "enabled": false,
+          "size": "0px",
+          "collapsible": false,
+          "collapsed": true
+        },
+        "east": {
+          "enabled": true,
+          "size": "50%",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-east-split"
+        },
+        "west": {
+          "enabled": true,
+          "size": "50%",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-west-split"
+        }
+      }
+    },
+    "minimal": {
+      "name": "Minimal Layout",
+      "description": "Minimal layout with collapsed side panels",
+      "docks": {
+        "north": {
+          "enabled": true,
+          "size": "45px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-north-minimal"
+        },
+        "south": {
+          "enabled": true,
+          "size": "30px",
+          "collapsible": true,
+          "collapsed": false,
+          "className": "dock-south-minimal"
+        },
+        "east": {
+          "enabled": true,
+          "size": "250px",
+          "collapsible": true,
+          "collapsed": true,
+          "className": "dock-east-minimal"
+        },
+        "west": {
+          "enabled": true,
+          "size": "200px",
+          "collapsible": true,
+          "collapsed": true,
+          "className": "dock-west-minimal"
+        }
+      }
+    }
+  }
+}

@@ -2,11 +2,16 @@
  * ViewRenderer - Renders views from JSON definitions
  */
 class ViewRenderer {
-    constructor(componentRegistry, tagManager, eventBus) {
+    constructor(componentRegistry, tagManager, eventBus, dockingManager = null) {
         this.componentRegistry = componentRegistry;
         this.tagManager = tagManager;
         this.eventBus = eventBus;
+        this.dockingManager = dockingManager;
         this.renderCache = new Map();
+    }
+
+    setDockingManager(dockingManager) {
+        this.dockingManager = dockingManager;
     }
 
     async render(viewData, container) {
@@ -28,9 +33,14 @@ class ViewRenderer {
             this.initializeParams(viewData.params);
         }
 
-        // Render root component
-        if (viewData.root) {
-            await this.renderComponent(viewData.root, container);
+        // Check if view uses docking layout
+        if (viewData.docking && this.dockingManager) {
+            await this.renderDockedView(viewData, container);
+        } else {
+            // Render traditional non-docked view
+            if (viewData.root) {
+                await this.renderComponent(viewData.root, container);
+            }
         }
 
         // Setup view scripts
@@ -39,6 +49,46 @@ class ViewRenderer {
         }
 
         return container;
+    }
+
+    async renderDockedView(viewData, container) {
+        const { docking } = viewData;
+
+        // Apply dock template if specified
+        if (docking.template) {
+            this.dockingManager.applyTemplate(docking.template);
+        }
+
+        // Render content for each dock region
+        if (docking.north) {
+            await this.dockingManager.renderDockContent('north', docking.north, this);
+        }
+
+        if (docking.south) {
+            await this.dockingManager.renderDockContent('south', docking.south, this);
+        }
+
+        if (docking.east) {
+            await this.dockingManager.renderDockContent('east', docking.east, this);
+        }
+
+        if (docking.west) {
+            await this.dockingManager.renderDockContent('west', docking.west, this);
+        }
+
+        // Render center content (main view area)
+        if (docking.center || viewData.root) {
+            const centerContent = this.dockingManager.getCenterContent();
+            if (centerContent) {
+                const content = docking.center || viewData.root;
+                if (content.component) {
+                    await this.renderComponent(content.component, centerContent);
+                } else {
+                    // Legacy support: render root directly
+                    await this.renderComponent(content, centerContent);
+                }
+            }
+        }
     }
 
     async renderComponent(componentData, container) {
